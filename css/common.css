@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #0b2e46;
+  font-family: AkkoThin;
+  background-color:#fef6fa;
+}
+
+img {
+  max-width: 100%;
+}
+
+@font-face {
+    font-family: 'AkkoThin';
+    src: url(../resources/AkkoThin.ttf);
+}
+
+@font-face {
+    font-family: 'AkkoRegular';
+    src: url(../resources/AkkoRegular.ttf);
+}
+
+a {
+  text-decoration: none;
+}
+
+.button {
+  border-radius: 5px;
+  color: #f3f3f0;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.button.call-to-action {
+  background-color: #ee0f59;
+}
+
+/*%%%%%%%%%%%% NAVBAR %%%%%%%%%%%%*/
+side {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  text-transform: uppercase;
+  background-color: rgba(11, 46,70,0.8);
+  padding: 20px 3%;
+  width: 15%;
+}
+
+side .call-to-action {
+  display:block;
+  font-size: 1.2em;
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  right: 50px;
+}
+
+side img {
+  padding-bottom: 20px;
+}
+side ul {
+  padding: 0;
+}
+
+side li {
+  list-style: none;
+  padding: none;
+}
+
+side li a {
+  color:#bdbec0;
+  display: inline-block;
+  padding: 5px 10px;
+  POSITIOn: relative;
+  font-size: 1.5em;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+}
+
+side li a.selected {
+  color: #f3f3f0;
+}
+
+side li a:before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  margin-top: -3px;
+  left: -10px;
+  background-color: #bdbec0;
+}
+
+side li a.selected:before {
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  left: -13px;
+  background-color: #f3f3f0;
+}
+
+side i {
+  text-transform: lowercase;
+}
+
+/* %%%%%%%%%%%% BODY %%%%%%%%%%% */
+.grid {
+  display: inline-block;
+  margin: 1%;
+  padding: 1%;
+}
+
+.grid-2 {
+  width: 45.5%;
+}
+
+section {
+  padding: 100px 5% 100px 26%;
+  text-align: center;
+}
+
+.has-image {
+  background-size: 100%;
+  background-attachment: fixed;
+  text-shadow: 0 2px 2px #333;
+  color: #f3f3f0;
+}
+
+#what {
+  background-image: url('../images/background.jpg');
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+#what img {
+  width: 50%;
+}
