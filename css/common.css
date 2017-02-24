@@ -36,6 +36,64 @@ a {
   background-color: #ee0f59;
 }
 
+.button.call-to-action-second {
+  background-color: #e6b012;
+}
+
+p{
+  text-align: justify;
+}
+
+#how img{
+  max-width: 70%;
+}
+
+#why {
+  background-color: #e6b012;
+}
+
+#why img{
+  max-width: 70%;
+}
+
+#why h1 {
+  text-align: justify;
+}
+
+#ga {
+  background-color: #10354C;
+}
+
+#ga img{
+  max-width: 100%;
+}
+
+#ga p{
+  color: #fff;
+  position: relative;
+  top: -50px;
+}
+
+#focus img{
+  max-width: 70%;
+}
+
+#focush1 {
+  font-size: 3.5em;
+  color: #fff;
+  text-align: justify;
+}
+
+#contact{
+  background-image: url('../images/footer.jpg');
+  background-size: 100%;
+  background-attachment: fixed;
+}
+
+form{
+  margin-left: -20%;
+}
+
 /*%%%%%%%%%%%% NAVBAR %%%%%%%%%%%%*/
 side {
   position: fixed;
