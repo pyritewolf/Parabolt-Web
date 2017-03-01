@@ -3,6 +3,7 @@ body {
   padding: 0;
   color: #0b2e46;
   font-family: AkkoThin;
+  font-size: 18px;
   background-color:#fef6fa;
 }
 
@@ -45,7 +46,7 @@ p{
 }
 
 #how img{
-  max-width: 70%;
+  max-width: 50%;
 }
 
 #why {
@@ -53,7 +54,7 @@ p{
 }
 
 #why img{
-  max-width: 70%;
+  max-width: 50%;
 }
 
 #why h1 {
@@ -75,13 +76,12 @@ p{
 }
 
 #focus img{
-  max-width: 70%;
+  max-width: 50%;
 }
 
 #focush1 {
   font-size: 3.5em;
-  color: #fff;
-  text-align: justify;
+     color:#f3f3f0;
 }
 
 #contact{
@@ -90,8 +90,13 @@ p{
   background-attachment: fixed;
 }
 
-form{
-  margin-left: -20%;
+#contact .grid-2:nth-of-type(1) {
+   text-align: right;
+}
+
+#contact .grid-2:nth-of-type(2) {
+   color:#f3f3f0;
+   font-size: 30px;
 }
 
 /*%%%%%%%%%%%% NAVBAR %%%%%%%%%%%%*/
@@ -172,6 +177,7 @@ side i {
 
 /* %%%%%%%%%%%% BODY %%%%%%%%%%% */
 .grid {
+  vertical-align: middle;
   display: inline-block;
   margin: 1%;
   padding: 1%;
@@ -201,4 +207,25 @@ section {
 
 #what img {
   width: 50%;
+}
+
+
+/*            FORMS             */
+input, textarea {
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-family: AkkoThin;
+  border: 1px solid #f3f3f0;
+  outline: 0;
+  margin: 5px;
+  background-color: rgba(243,243,240, 0.5);
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  font-size: 14px;
+}
+
+input:focus, textarea:focus {
+  background-color: rgba(243,243,240, 0.9);
+  transition: 0.5s;
+  -moz-transition: 0.5s;
 }
