@@ -139,6 +139,8 @@ side li a {
 
 side li a.selected {
   color: #f3f3f0;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 side li a:before {
@@ -152,6 +154,8 @@ side li a:before {
   margin-top: -3px;
   left: -10px;
   background-color: #bdbec0;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 side li a.selected:before {
