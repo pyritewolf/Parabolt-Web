@@ -211,7 +211,7 @@ section {
 
 
 /*            FORMS             */
-input, textarea {
+input, textarea, select {
   border-radius: 5px;
   padding: 5px 10px;
   font-family: AkkoThin;
@@ -229,3 +229,18 @@ input:focus, textarea:focus {
   transition: 0.5s;
   -moz-transition: 0.5s;
 }
+
+
+/*Idea*/
+#share {
+background-color: #e6b012;
+}
+#share form{text-align: justify;}
+
+#share h1{
+color:#fff;
+text-align: justify;
+font-size: 50px;
+}
+
+#submit{background-color: #ee0f59;}

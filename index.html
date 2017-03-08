@@ -15,6 +15,12 @@
   <!--[if lt IE 9]>
   <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+
+<script>
+
+</script>
+
+
 </head>
 <body>
     <side>
@@ -27,7 +33,7 @@
           <li><a href="#ga">Parabolt & <i>g</i>A</a></li>
           <li><a href="#contact">Contact us</a></li>
       </ul>
-      <a href="share.html" class="button call-to-action">Share your idea</a>
+      <a href="#share" class="button call-to-action">Share your idea</a>
     </side>
 
     <main>
@@ -96,12 +102,32 @@
       </div>
     </section>
 
+    <section id="share" name="share" class=" section-5">
+      <div class="grid grid-2">
+        <h1 id="focush1">Comparte tu idea</h1>
+        <form action="#" id="form">
+          <input type="text" name="nombre" placeholder="Your name"><br>
+          <input type="text" name="apellido" placeholder="Your lastname"></br>
+          <input type="email" name="email" placeholder="Your Email"></br>
+          <textarea name="descripcion" rows=4 cols=46 placeholder="Leave a message for us! :)"></textarea>
+          <input type="text" name="estado" placeholder="State of development"></br>
+          <textarea name="fundadores" rows=4 cols=46 placeholder="Founders"></textarea>
+          <select name="negocio" placeholder="business">
+            <option value="customer-science">Customer Science</option>
+            <option value="virtual-logistics">Virtual Logistics</option>
+            <option value="otros">Others</option>
+          </select></br>
+          <input type="text" name="web" placeholder="Web page or Fan page"></br>
+          <input type="checkbox" name="terminos" value="acept" checked="checked"> Terms and Conditions<br><br>
+          <input id="submit" type="button" name="submit" value="submit">
+        </form>
+      </div>
+    </section>
 
     <section id="contact" name="contact" class=" section-6">
-
     <div class="grid grid-2">
         <h1 id="focush1">We'd love to<br> hear from you</h1>
-        <form action="#">
+        <form action="#" >
           <input type="text" name="usrname" placeholder="Your name"> <input type="email" name="usremail" placeholder="Your e-mail"></br>
           <br><textarea name=address rows=4 cols=46 placeholder="Leave a message for us! :)"></textarea>
           </br></br>
@@ -117,5 +143,28 @@
     </section>
 
   </main>
+
+  <script>
+      $(document).ready(function(){
+
+          $("#submit").on('click', function(){
+
+              $.ajax({
+                   url: 'http://192.168.16.179:3001/api/ideas',
+                  type : "POST",
+                  dataType : 'json',
+                  data : $("#form").serialize(),
+                  success : function(result) {
+
+                      console.log(result);
+                  },
+                  error: function(xhr, resp, text) {
+                      console.log(xhr, resp, text);
+                  }
+              })
+          });
+      });
+
+  </script>
 </body>
 </html>
