@@ -9,10 +9,48 @@ $(document).ready(function () {
     $('html, body').animate({
         scrollTop: $( $.attr(this, 'href') ).offset().top
     }, 500);
+
   });
 
 
+    // change side menu on scroll
+    var currentSectionBottomLimit = $("section:nth-of-type(1)").outerHeight();
+    var currentSectionTopLimit = 0;
 
+    $(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= currentSectionBottomLimit) {
+          var i = 0;
+          $("section").each(function () {
+            if (Math.floor($(this).offset().top) < scroll) {
+              i++;
+            } else {
+              if (i == 0) { i = 1; }
+              currentSectionTopLimit = $("section:nth-of-type("+ i +")").offset().top;
+              currentSectionBottomLimit = $("section:nth-of-type("+ i +")").outerHeight() + currentSectionTopLimit;
+            }
+          });
+
+          $("side a").removeClass("selected");
+          $("side li:nth-of-type("+ i +") a").addClass("selected");
+        } else if (scroll <= currentSectionTopLimit){
+          var i = 0;
+          $("section").each(function () {
+            if (Math.floor($(this).offset().top) > scroll) {
+              i++;
+            } else {
+              if (i == 0) { i = 1; }
+              currentSectionTopLimit = $("section:nth-of-type("+ i +")").offset().top;
+              currentSectionBottomLimit = $("section:nth-of-type("+ i +")").outerHeight() + currentSectionTopLimit;
+            }
+          });
+
+          $("side a").removeClass("selected");
+          $("side li:nth-of-type("+ i +") a").addClass("selected");
+        }
+
+    });
 
 
   //press arrow to slide
