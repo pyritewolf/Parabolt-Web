@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   color: #0b2e46;
-  font-family: AkkoThin;
+  font-family: AkkoRegular;
   font-size: 15px;
   background-color:#fef6fa;
 }
@@ -21,19 +21,28 @@ img {
     src: url(../resources/AkkoRegular.ttf);
 }
 
+@font-face {
+    font-family: 'AkkoMedium';
+    src: url(../resources/AkkoMedium.ttf);
+}
+
 a {
   text-decoration: none;
 }
 
-.button {
+.button, button {
   border-radius: 5px;
   color: #f3f3f0;
   padding: 10px 20px;
   text-align: center;
   display: inline-block;
+  border: 0;
+  font-size: 15px;
+  font-family: AkkoMedium;
+  text-transform: uppercase;
 }
 
-.button.call-to-action {
+.button.call-to-action, button.call-to-action {
   background-color: #ee0f59;
 }
 
@@ -43,60 +52,6 @@ a {
 
 p{
   text-align: justify;
-}
-
-#how img{
-  max-width: 50%;
-}
-
-#why {
-  background-color: #e6b012;
-}
-
-#why img{
-  max-width: 50%;
-}
-
-#why h1 {
-  text-align: justify;
-}
-
-#ga {
-  background-color: #10354C;
-}
-
-#ga img{
-  max-width: 100%;
-}
-
-#ga p{
-  color: #fff;
-  position: relative;
-  top: -50px;
-}
-
-#focus img{
-  max-width: 50%;
-}
-
-#focush1 {
-  font-size: 3.5em;
-     color:#f3f3f0;
-}
-
-#contact{
-  background-image: url('../images/footer.jpg');
-  background-size: 100%;
-  background-attachment: fixed;
-}
-
-#contact .grid-2:nth-of-type(1) {
-   text-align: right;
-}
-
-#contact .grid-2:nth-of-type(2) {
-   color:#f3f3f0;
-   font-size: 30px;
 }
 
 /*%%%%%%%%%%%% NAVBAR %%%%%%%%%%%%*/
@@ -125,6 +80,7 @@ side img {
 }
 side ul {
   padding: 0;
+  margin: 0;
 }
 
 side li {
@@ -176,6 +132,7 @@ side i {
 }
 
 /* %%%%%%%%%%%% BODY %%%%%%%%%%% */
+
 .grid {
   vertical-align: middle;
   display: inline-block;
@@ -199,6 +156,10 @@ section {
   color: #f3f3f0;
 }
 
+.is-dark {
+  color: #f3f3f0;
+}
+
 #what {
   background-image: url('../images/background.jpg');
   text-transform: uppercase;
@@ -210,16 +171,70 @@ section {
 }
 
 
+#how img{
+  max-width: 50%;
+}
+
+#why {
+  background-color: #007e89;
+}
+
+#why h1 span {
+  color: #00afc9;
+}
+
+#why img{
+  max-width: 50%;
+}
+
+#ga {
+  background-color: #10354C;
+}
+
+#ga img{
+  max-width: 100%;
+}
+
+#ga .grid{
+  vertical-align: middle;
+}
+
+#focus img{
+  max-width: 50%;
+}
+
+#focush1 {
+  font-size: 3.5em;
+     color:#f3f3f0;
+}
+
+#contact{
+  background-image: url('../images/footer.jpg');
+}
+
+#contact .grid-2:nth-of-type(1) {
+   text-align: right;
+}
+
+#contact .grid-2:nth-of-type(2) {
+   color:#f3f3f0;
+   font-size: 30px;
+}
+
+
 /*            FORMS             */
-input, textarea, select {
+input:not([type="checkbox"]), textarea, select {
   border-radius: 5px;
   padding: 5px 10px;
-  font-family: AkkoThin;
+  font-family: AkkoRegular;
   border: 1px solid #f3f3f0;
   outline: 0;
   margin: 5px;
   background-color: rgba(243,243,240, 0.5);
   transition: 0.5s;
+  width: 97%;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
   -moz-transition: 0.5s;
   font-size: 14px;
 }
@@ -233,7 +248,7 @@ input:focus, textarea:focus {
 
 /*Idea*/
 #share {
-background-color: #e6b012;
+background-color: #00afc9;
 }
 #share form{text-align: justify;}
 
@@ -242,5 +257,3 @@ color:#fff;
 text-align: justify;
 font-size: 50px;
 }
-
-#submit{background-color: #ee0f59;}

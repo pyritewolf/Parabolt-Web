@@ -1,10 +1,9 @@
 $(document).ready(function () {
+  
   resizeSections();
 
   $("side").on('click', 'a', function(event){
     event.preventDefault();
-    $("side a").removeClass("selected");
-    $(this).addClass("selected");
 
     $('html, body').animate({
         scrollTop: $( $.attr(this, 'href') ).offset().top
@@ -19,9 +18,13 @@ $(document).ready(function () {
 
     $(window).scroll(function (event) {
         var scroll = $(window).scrollTop();
+        var i = 0;
 
-        if (scroll >= currentSectionBottomLimit) {
-          var i = 0;
+        if (scroll == 0) {
+          i = 1;
+          currentSectionTopLimit = 0;
+          currentSectionBottomLimit = $("section:nth-of-type(1)").outerHeight()
+        }else if (scroll > currentSectionBottomLimit) {
           $("section").each(function () {
             if (Math.floor($(this).offset().top) < scroll) {
               i++;
@@ -29,27 +32,41 @@ $(document).ready(function () {
               if (i == 0) { i = 1; }
               currentSectionTopLimit = $("section:nth-of-type("+ i +")").offset().top;
               currentSectionBottomLimit = $("section:nth-of-type("+ i +")").outerHeight() + currentSectionTopLimit;
+              return false;
             }
           });
 
-          $("side a").removeClass("selected");
-          $("side li:nth-of-type("+ i +") a").addClass("selected");
-        } else if (scroll <= currentSectionTopLimit){
-          var i = 0;
+        } else if (scroll < currentSectionTopLimit){
           $("section").each(function () {
-            if (Math.floor($(this).offset().top) > scroll) {
+            if ((Math.floor($(this).offset().top) + $(this).outerHeight()) > scroll) {
               i++;
             } else {
-              if (i == 0) { i = 1; }
+              i++;
               currentSectionTopLimit = $("section:nth-of-type("+ i +")").offset().top;
               currentSectionBottomLimit = $("section:nth-of-type("+ i +")").outerHeight() + currentSectionTopLimit;
+              return false;
             }
           });
+        } else if (scroll == currentSectionBottomLimit) {
+          currentSectionTopLimit = currentSectionBottomLimit;
 
-          $("side a").removeClass("selected");
-          $("side li:nth-of-type("+ i +") a").addClass("selected");
+          $("section").each(function () {
+            if (Math.floor($(this).offset().top) != scroll) {
+              i++;
+            } else {
+              i++;
+              currentSectionBottomLimit = $("section:nth-of-type("+ i +")").outerHeight() + currentSectionTopLimit;
+              return false;
+            }
+          });
         }
 
+
+
+        if (i != 0) {
+                  $("side a").removeClass("selected");
+                  $("side li:nth-of-type("+ i +") a").addClass("selected");
+            }
     });
 
 
@@ -69,33 +86,27 @@ $(document).ready(function () {
     });
 
       if (e.which == 39 || e.which == 40) {
+        //slide para abajo
         e.preventDefault();
         $('html, body').animate({
           scrollTop: $("section:nth-of-type("+ (sectNumber+1)+")").offset().top
         }, 500);
-        $("side a").removeClass("selected");
-        $("side li:nth-of-type("+(sectNumber+1)+") a").addClass("selected");
       } else if ((e.which == 37 || e.which == 38) && sectNumber != i) {
+        //slide para arriba
         e.preventDefault();
         $('html, body').animate({
           scrollTop: $("section:nth-of-type("+ (i-1)+")").offset().top
         }, 500);
-        $("side a").removeClass("selected");
-        $("side li:nth-of-type("+(i-1)+") a").addClass("selected");
       } else if ((e.which == 37 || e.which == 38) && sectNumber != 1) {
         e.preventDefault();
         $('html, body').animate({
           scrollTop: $("section:nth-of-type("+ (sectNumber-1)+")").offset().top
         }, 500);
-        $("side a").removeClass("selected");
-        $("side li:nth-of-type("+(sectNumber-1)+") a").addClass("selected");
       } else if ((e.which == 37 || e.which == 38) && sectNumber == 1) {
         e.preventDefault();
         $('html, body').animate({
           scrollTop: 0
         }, 500);
-        $("side a").removeClass("selected");
-        $("side li:nth-of-type(1) a").addClass("selected");
       }
 
   });

@@ -7,24 +7,27 @@
   <meta name = "description" content="We transform innovative ideas into disruptive businesses">
   <meta name = "author" content="Parabolt">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="icon" href="images/favicon.png" type="image/png">
-  <link rel = "stylesheet" href="css/common.css?v=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel = "stylesheet" href="css/common.css?v=1.01">
+  <link rel = "stylesheet" href="css/responsive.css?v=1.00">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/responsive.js"></script>
   <!--[if lt IE 9]>
   <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-
-<script>
-
-</script>
 
 
 </head>
 <body>
     <side>
-      <img src="images/logo.png">
+      <i class="material-icons mobile-only" id="menu-button">&#xE5D2;</i>
+      <img class="computer-only" src="images/logo.png">
+      <img class="mobile-only" id="logo" src="images/logo-responsive.png">
       <ul class="nav">
           <li><a class="selected" href="#what">What we do</a></li>
           <li><a href="#how">How we do it</a></li>
@@ -32,8 +35,10 @@
           <li><a href="#focus">Our focus</a></li>
           <li><a href="#ga">Parabolt & <i>g</i>A</a></li>
           <li><a href="#contact">Contact us</a></li>
+          <li class="mobile-only"><a href="#share">Share your idea</a></li>
+          <li class="mobile-only" id="close"><i class="material-icons">&#xE5CD;</i></li>
       </ul>
-      <a href="#share" class="button call-to-action">Share your idea</a>
+      <a href="#share" class="button call-to-action computer-only">Share your idea</a>
     </side>
 
     <main>
@@ -65,10 +70,10 @@
     </section>
 
 
-    <section id="why" name="why" class=" section-3">
+    <section id="why" name="why" class="is-dark section-3">
       <div class="grid grid-2">
         <img src="images/bujia1.png">
-        <h1>We LAB your idea</h1>
+        <h1>We <span class="accented">LAB</span> your idea</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum  </p>
       </div>
       <div class="grid grid-2">
@@ -93,7 +98,7 @@
     </section>
 
 
-    <section id="ga" name="ga" class=" section-5">
+    <section id="ga" name="ga" class="is-dark section-5">
       <div class="grid grid-2">
         <img src="images/logo-25-blanco.png">
       </div>
@@ -102,7 +107,7 @@
       </div>
     </section>
 
-    <section id="contact" name="contact" class=" section-6">
+    <section id="contact" name="contact" class="has-image section-6">
     <div class="grid grid-2">
         <h1 id="focush1">We'd love to<br> hear from you</h1>
         <form action="#" >
@@ -112,11 +117,14 @@
           <a href="#" class="button call-to-action">Send</a>
         </form>
       </div>
-      <div class="grid grid-2">
-        <img src="images/Logotipo.png"><br>
-          <p>Lima 241, CABA, 1073<p>
-          <p>Argentina</p>
-          <p>+54 11 4510 7200</p>
+      <div class="grid grid-2" vocab="http://schema.org/" typeof="Organization">
+          <img property="logo" src="images/Logotipo.png"><br>
+          <p><span property="name">Parabolt</span>
+            <span property="address">Lima 241, CABA, 1073</span><br>
+            <span property="foundingLocation">Argentina</span><br>
+            <span property="telephone">+54 11 4510 7200</span><br>
+            <span property="email">hello@parabolt.net</span>
+          </p>
         </div>
     </section>
 
@@ -125,8 +133,8 @@
       <div class="grid grid-2">
         <h1 id="focush1">Share your idea</h1>
         <form action="#" id="form">
-          <input type="text" name="nombre" placeholder="Your name"><br>
-          <input type="text" name="apellido" placeholder="Your lastname"></br>
+          <input type="text" name="nombre" placeholder="Your name" class="grid grid-2">
+          <input type="text" name="apellido" placeholder="Your lastname" class="grid grid-2"></br>
           <input type="email" name="email" placeholder="Your Email"></br>
           <textarea name="descripcion" rows=4 cols=46 placeholder="Leave a message for us! :)"></textarea>
           <input type="text" name="estado" placeholder="State of development"></br>
@@ -138,10 +146,11 @@
           </select></br>
           <input type="text" name="web" placeholder="Web page or Fan page"></br>
           <input type="checkbox" name="terminos" value="acept" checked="checked"> Terms and Conditions<br><br>
-          <button id="submit" type="submit" name="submit">Submit</button>
+          <button id="submit" class="call-to-action" type="submit" name="submit">Submit</button>
         </form>
       </div>
     </section>
+
 
   </main>
 
