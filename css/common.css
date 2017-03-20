@@ -51,7 +51,7 @@ a {
 }
 
 p{
-  text-align: justify;
+  text-align: left;
 }
 
 /*%%%%%%%%%%%% NAVBAR %%%%%%%%%%%%*/
@@ -250,7 +250,7 @@ input:focus, textarea:focus {
 #share {
 background-color: #00afc9;
 }
-#share form{text-align: justify;}
+#share form{text-align: left;}
 
 #share h1{
 color:#fff;
