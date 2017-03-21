@@ -38,7 +38,7 @@ a {
   display: inline-block;
   border: 0;
   font-size: 15px;
-  font-family: AkkoMedium;
+  font-family: AkkoRegular;
   text-transform: uppercase;
 }
 
@@ -52,6 +52,10 @@ a {
 
 p{
   text-align: left;
+}
+
+strong {
+  color: #00afc9;
 }
 
 /*%%%%%%%%%%%% NAVBAR %%%%%%%%%%%%*/
@@ -78,9 +82,11 @@ side .call-to-action {
 side img {
   padding-bottom: 20px;
 }
+
 side ul {
   padding: 0;
   margin: 0;
+  font-family: AkkoThin;
 }
 
 side li {
@@ -120,8 +126,7 @@ side li a:before {
 }
 
 side li a.selected:before {
-  width: 12px;
-  height: 12px;
+  border: 3px double rgba(11, 46,70,0.8);
   margin-top: -6px;
   left: -13px;
   background-color: #f3f3f0;
@@ -160,6 +165,10 @@ section {
   color: #f3f3f0;
 }
 
+section ul {
+  text-align: left;
+}
+
 #what {
   background-image: url('../images/background.jpg');
   text-transform: uppercase;
@@ -170,13 +179,39 @@ section {
   width: 50%;
 }
 
+#what h2 {
+  font-weight: normal;
+}
+
+#what h2 strong {
+  color: #fef6fa;
+}
+
 
 #how img{
   max-width: 50%;
 }
 
+#how .grid {
+  vertical-align: top;
+}
+
 #why {
   background-color: #007e89;
+}
+
+#why strong {
+  color: #fef6fa;
+}
+
+#why .grid-2:nth-of-type(2) h1 {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: AkkoThin;
+  margin: 0;
+  font-size: 7em;
+  text-align: left;
+  line-height: 0.9em;
 }
 
 #why h1 span {
@@ -225,16 +260,14 @@ section {
 /*            FORMS             */
 input:not([type="checkbox"]), textarea, select {
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 1.5%;
   font-family: AkkoRegular;
   border: 1px solid #f3f3f0;
   outline: 0;
-  margin: 5px;
+  margin: 5px 0;
   background-color: rgba(243,243,240, 0.5);
   transition: 0.5s;
   width: 97%;
-  padding-left: 1.5%;
-  padding-right: 1.5%;
   -moz-transition: 0.5s;
   font-size: 14px;
 }
@@ -254,6 +287,6 @@ background-color: #00afc9;
 
 #share h1{
 color:#fff;
-text-align: justify;
+text-align: left;
 font-size: 50px;
 }

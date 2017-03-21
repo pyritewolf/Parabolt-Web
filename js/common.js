@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  
+
   resizeSections();
 
   $("side").on('click', 'a', function(event){
@@ -9,6 +9,8 @@ $(document).ready(function () {
         scrollTop: $( $.attr(this, 'href') ).offset().top
     }, 500);
 
+    $(".nav").toggleClass("visible");
+    
   });
 
 

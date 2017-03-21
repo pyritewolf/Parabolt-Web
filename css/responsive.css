@@ -72,16 +72,16 @@
   }
 
   section {
-    padding: 100px 5% 100px 5%;
+    padding: 50px 5% 50px 5%;
   }
 
   .has-image {
-    background-size: 300%;
+    background-size: 350%;
     background-position: 50%;
   }
 
   .grid {
-    width: 100%;
+    width: 96%;
   }
 
   #what img {
