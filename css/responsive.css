@@ -75,17 +75,21 @@
     padding: 50px 5% 50px 5%;
   }
 
-  .has-image {
-    background-size: 350%;
-    background-position: 50%;
-  }
-
   .grid {
     width: 96%;
   }
 
+  #what {
+    background-image: url('../images/background-responsive.jpg');
+  }
+
   #what img {
     width: 35%;
+  }
+
+
+  #contact{
+    background-image: url('../images/footer-responsive.jpg');
   }
 
 }

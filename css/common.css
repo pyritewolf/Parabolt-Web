@@ -154,8 +154,13 @@ section {
   text-align: center;
 }
 
+.short {
+  font-size: 1.2em;
+}
+
 .has-image {
-  background-size: 100%;
+  background-size: 150%;
+  background-position: 50%;
   background-attachment: fixed;
   text-shadow: 0 2px 2px #333;
   color: #f3f3f0;
@@ -238,13 +243,18 @@ section ul {
   max-width: 50%;
 }
 
-#focush1 {
-  font-size: 3.5em;
-     color:#f3f3f0;
+#focus .grid {
+  vertical-align: top;
 }
 
 #contact{
   background-image: url('../images/footer.jpg');
+}
+
+
+#contact h2 {
+  font-size: 3.5em;
+     color:#f3f3f0;
 }
 
 #contact .grid-2:nth-of-type(1) {
