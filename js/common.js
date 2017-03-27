@@ -1,7 +1,12 @@
 $(document).ready(function () {
 
   resizeSections();
+  if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+    $("side a").removeClass("selected");
+    $("section").removeClass("slide-effect");
+  }
 
+  // when clicking the menu, scroll to corresponding section
   $("side").on('click', 'a', function(event){
     event.preventDefault();
 
@@ -10,67 +15,34 @@ $(document).ready(function () {
     }, 500);
 
     $(".nav").toggleClass("visible");
-    
+
   });
 
-
+if(navigator.userAgent.toLowerCase().indexOf('firefox') == -1){
     // change side menu on scroll
     var currentSectionBottomLimit = $("section:nth-of-type(1)").outerHeight();
     var currentSectionTopLimit = 0;
+    var currentSectionId = 1;
+    var prevScroll = 0;
 
     $(window).scroll(function (event) {
         var scroll = $(window).scrollTop();
-        var i = 0;
 
-        if (scroll == 0) {
-          i = 1;
-          currentSectionTopLimit = 0;
-          currentSectionBottomLimit = $("section:nth-of-type(1)").outerHeight()
-        }else if (scroll > currentSectionBottomLimit) {
-          $("section").each(function () {
-            if (Math.floor($(this).offset().top) < scroll) {
-              i++;
-            } else {
-              if (i == 0) { i = 1; }
-              currentSectionTopLimit = $("section:nth-of-type("+ i +")").offset().top;
-              currentSectionBottomLimit = $("section:nth-of-type("+ i +")").outerHeight() + currentSectionTopLimit;
-              return false;
-            }
-          });
-
-        } else if (scroll < currentSectionTopLimit){
-          $("section").each(function () {
-            if ((Math.floor($(this).offset().top) + $(this).outerHeight()) > scroll) {
-              i++;
-            } else {
-              i++;
-              currentSectionTopLimit = $("section:nth-of-type("+ i +")").offset().top;
-              currentSectionBottomLimit = $("section:nth-of-type("+ i +")").outerHeight() + currentSectionTopLimit;
-              return false;
-            }
-          });
-        } else if (scroll == currentSectionBottomLimit) {
-          currentSectionTopLimit = currentSectionBottomLimit;
-
-          $("section").each(function () {
-            if (Math.floor($(this).offset().top) != scroll) {
-              i++;
-            } else {
-              i++;
-              currentSectionBottomLimit = $("section:nth-of-type("+ i +")").outerHeight() + currentSectionTopLimit;
-              return false;
-            }
-          });
+        if (scroll > prevScroll && scroll >= currentSectionBottomLimit) {
+          currentSectionId++;
+        } else if (scroll < prevScroll && scroll < currentSectionTopLimit){
+          currentSectionId--;
         }
+        currentSectionTopLimit = $("section:nth-of-type("+ currentSectionId +")").offset().top;
+        currentSectionBottomLimit = currentSectionTopLimit + $("section:nth-of-type("+ currentSectionId +")").outerHeight();
 
+        $("side a").removeClass("selected");
+        $("side li:nth-of-type("+ currentSectionId +") a").addClass("selected");
+        validateEffects(currentSectionId, scroll, currentSectionTopLimit, currentSectionBottomLimit);
 
-
-        if (i != 0) {
-                  $("side a").removeClass("selected");
-                  $("side li:nth-of-type("+ i +") a").addClass("selected");
-            }
+        prevScroll = scroll;
     });
-
+}
 
   //press arrow to slide
   $(document).keydown(function(e) {
@@ -90,26 +62,21 @@ $(document).ready(function () {
       if (e.which == 39 || e.which == 40) {
         //slide para abajo
         e.preventDefault();
-        $('html, body').animate({
-          scrollTop: $("section:nth-of-type("+ (sectNumber+1)+")").offset().top
-        }, 500);
+        scrollNumber = sectNumber+1;
       } else if ((e.which == 37 || e.which == 38) && sectNumber != i) {
         //slide para arriba
         e.preventDefault();
-        $('html, body').animate({
-          scrollTop: $("section:nth-of-type("+ (i-1)+")").offset().top
-        }, 500);
+        scrollNumber = i-1;
       } else if ((e.which == 37 || e.which == 38) && sectNumber != 1) {
         e.preventDefault();
-        $('html, body').animate({
-          scrollTop: $("section:nth-of-type("+ (sectNumber-1)+")").offset().top
-        }, 500);
+        scrollNumber = sectNumber-1;
       } else if ((e.which == 37 || e.which == 38) && sectNumber == 1) {
         e.preventDefault();
-        $('html, body').animate({
-          scrollTop: 0
-        }, 500);
+        scrollNumber = 0;
       }
+      $('html, body').animate({
+        scrollTop: $("section:nth-of-type("+ scrollNumber+")").offset().top
+      }, 750);
 
   });
 
@@ -135,4 +102,45 @@ function resizeSections() {
     }
   });
 
+}
+
+
+// EFFECTS! :)
+function validateEffects(i, scroll, topLimit, bottomLimit) {
+  var currentSection = $("section:nth-of-type("+i+")");
+  var closeIn = bottomLimit - scroll;
+
+  //slide effect: two invisible elements appear from the sides.
+  //requires .slide-effect class on the parent section
+
+  if (closeIn > 0 && closeIn <= 100 && $("section:nth-of-type("+(i+1)+")").hasClass("slide-effect")) {
+    leftGrid = $("section:nth-of-type("+(i+1)+") .grid-2:nth-of-type(1)");
+    rightGrid = $("section:nth-of-type("+(i+1)+") .grid-2:nth-of-type(2)");
+
+    leftGrid.css("left", "-"+ closeIn + "px");
+    leftGrid.css("opacity", "0." + (100-closeIn));
+
+    rightGrid.css("right", "-"+ closeIn + "px");
+    rightGrid.css("opacity", "0." + (100-closeIn));
+  }
+
+  //partial effect: a .grid's span children fade in with 0.5s delay
+  //requires .partial-effect class on the parent element
+  if (closeIn > 0 && closeIn <= 200 && $("section:nth-of-type("+(i+1)+") .grid").hasClass("partial-effect")) {
+    var partial = $("section:nth-of-type("+(i+1)+") .partial-effect");
+    showPartials(partial);
+  }
+
+
+}
+
+function showPartials (parentGrid) {
+	setTimeout(function () {
+		parentGrid.find("span:not(.shown)").first().fadeIn(500);
+		parentGrid.find("span:not(.shown)").first().addClass("shown");
+		if (parentGrid.find("span:not(.shown)").length > 0) {
+			showPartials(parentGrid);
+		}
+
+	}, 300)
 }
